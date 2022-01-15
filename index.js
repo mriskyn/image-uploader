@@ -17,7 +17,7 @@ app.post('/upload/image', multerCheck(), (req, res) => {
     });
   }
 
-  res.send('image uploaded');
+  res.status(201).json({ file });
 });
 
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
