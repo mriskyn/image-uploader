@@ -104,4 +104,6 @@ dist
 .tern-port
 
 # Images file
-images/
+images/*.png
+images/*.jpg
+images/*.jpeg
