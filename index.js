@@ -4,16 +4,16 @@ const path = require('path');
 const PORT = process.env.PORT || 4321;
 
 const { sequelize } = require('./models');
-const authRoutes = require('./routes/authRoutes')
-const imageRoutes = require('./routes/imageRoutes')
+const authRoutes = require('./routes/authRoutes');
+const imageRoutes = require('./routes/imageRoutes');
 
 const app = express();
 
 app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, '/images')));
 
-app.use('/api/v1', authRoutes)
-app.use('/api/v1', imageRoutes)
+app.use('/api/v1', authRoutes);
+app.use('/api/v1', imageRoutes);
 
 async function main() {
   try {
