@@ -1,0 +1,184 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Image Uploader API",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/api/v1",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/upload/image": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Upload Image",
+        "operationId": "UploadImage",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "image"
+                ],
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Login User",
+        "operationId": "LoginUser",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUserRequest"
+              },
+              "example": {
+                "email": "rsk@mail.com",
+                "password": "rsk123"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Register User",
+        "operationId": "RegisterUser",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterUserRequest"
+              },
+              "example": {
+                "name": "Risky Nugraha",
+                "email": "rsk@mail.com",
+                "password": "rsk123"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginUserRequest": {
+        "title": "LoginUserRequest",
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "rsk@mail.com",
+          "password": "rsk123"
+        }
+      },
+      "RegisterUserRequest": {
+        "title": "RegisterUserRequest",
+        "required": [
+          "name",
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "name": "Risky Nugraha",
+          "email": "rsk@mail.com",
+          "password": "rsk123"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}

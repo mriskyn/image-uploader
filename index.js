@@ -1,8 +1,10 @@
 require('dotenv').config();
 const express = require('express');
+const swaggerUi = require('swagger-ui-express')
 const path = require('path');
 const PORT = process.env.PORT || 4321;
 
+const swaggerDocument = require('./docs')
 const { sequelize } = require('./models');
 const authRoutes = require('./routes/authRoutes');
 const imageRoutes = require('./routes/imageRoutes');
@@ -14,6 +16,12 @@ app.use('/images', express.static(path.join(__dirname, '/images')));
 
 app.use('/api/v1', authRoutes);
 app.use('/api/v1', imageRoutes);
+
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument, { customSiteTitle: 'Ecommerce API Docs' })
+);
 
 async function main() {
   try {
