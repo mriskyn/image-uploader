@@ -8,12 +8,14 @@ const swaggerDocument = require('./docs')
 const { sequelize } = require('./models');
 const authRoutes = require('./routes/authRoutes');
 const imageRoutes = require('./routes/imageRoutes');
+const homeRoutes = require('./routes/homeRoutes');
 
 const app = express();
 
 app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, '/images')));
 
+app.use(homeRoutes)
 app.use('/api/v1', authRoutes);
 app.use('/api/v1', imageRoutes);
 
